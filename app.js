@@ -1,16 +1,9 @@
-var endPoint = 'http://www.googleapis.com/youtube/v3/search';
+let endPoint = 'http://www.googleapis.com/youtube/v3/search';
 
-var apiKEY = 'AIzaSyBObrqAWLESv1eKZsNwBG8DBswlsYaIKCU';
+let apiKEY = 'AIzaSyBObrqAWLESv1eKZsNwBG8DBswlsYaIKCU';
 
-//https://content.googleapis.com/youtube/v3/search?
-//part=snippet
-//&q=bunbury
-//&type=video
-//&key=AIzaSyD-a9IF8KKYgoC3cpgS-Al7hLQDbugrDcw
-
-//https://www.youtube.com/watch?v=5dsGWM5XGdg
 function getDataFromApi(searchTerm, callback) {
-  var query = {
+  let query = {
     part: 'snippet',
     q: searchTerm,
     type: 'video',
@@ -19,14 +12,14 @@ function getDataFromApi(searchTerm, callback) {
   }
   $.getJSON(endPoint, query, callback);
 }
-//<iframe width="560" height="315" src="https://www.youtube.com/embed/5dsGWM5XGdg" frameborder="0" allowfullscreen></iframe>
+
 function displayData(data) {
   console.log(data.items[0].id.videoId);
   console.log(data);
-  var resultElement = '';
-  if (data.Search) {
-    data.Search.forEach(function(item) {
-      resultElement += '<p>' + item.Title + '</p>';
+  let resultElement = '';
+  if (data.items) {
+    data.items.forEach(function(item) {
+      resultElement += `<iframe width="300" height="169" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>`;
     });
   } else {
     resultElement += '<p>No results</p>';
@@ -38,7 +31,7 @@ function displayData(data) {
 function watchSubmit() {
   $('.js-search-form').submit(function(e) {
     e.preventDefault();
-    var query = $(this).find('.js-query').val();
+    let query = $(this).find('.js-query').val();
     getDataFromApi(query, displayData);
   });
 }

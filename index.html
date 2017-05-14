@@ -5,15 +5,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" href="main.css">
+  <title>Thinkful Tube</title>
 </head>
 
 <body>
+  <header>
+    <div class="logo-container"></div>
+    <div class="search-container"></div>
+  </header>
   <h1>Thinkful Tube</h1>
-  <form action="#" class="js-search-form">
-    <label for="query"></label>
-    <input type="text" class="js-query">
-    <button type="submit">Search</button>
+  <form action="#" id="thinkful-tube-form" class="js-search-form">
+    <button class="search-btn" type="submit">
+      <span class="btn-content">Search</span>
+    </button>
+    <div class="search-terms-border">
+      <input type="text" class="js-query search-term">
+    </div>
+    <!-- <label for="query"></label> -->
+
+
   </form>
 
   <div class="js-search-results">
