@@ -1,4 +1,4 @@
-let endPoint = 'http://www.googleapis.com/youtube/v3/search';
+let endPoint = 'https://www.googleapis.com/youtube/v3/search';
 
 let apiKEY = 'AIzaSyBObrqAWLESv1eKZsNwBG8DBswlsYaIKCU';
 
