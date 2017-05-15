@@ -2,9 +2,10 @@ let endPoint = 'https://www.googleapis.com/youtube/v3/search';
 
 let apiKEY = 'AIzaSyBObrqAWLESv1eKZsNwBG8DBswlsYaIKCU';
 
-function getDataFromApi(searchTerm, callback) {
+let getDataFromApi = (searchTerm, callback) => {
   let query = {
     part: 'snippet',
+    order: 'relevance',
     q: searchTerm,
     type: 'video',
     key: apiKEY,
@@ -13,13 +14,32 @@ function getDataFromApi(searchTerm, callback) {
   $.getJSON(endPoint, query, callback);
 }
 
-function displayData(data) {
-  console.log(data.items[0].id.videoId);
+//https://www.googleapis.com/youtube/v3/search?
+//part=snippet
+//&maxResults=25
+//&order=relevance
+//&q=site%3Ayoutube.com
+//&topicId=%2Fm%2F02vx4
+//&key={YOUR_API_KEY}
+
+
+//https://www.googleapis.com/youtube/v3/search?
+//pageToken=CBkQAA
+//&part=snippet
+//&maxResults=25
+//&order=relevance
+//&q=site%3Ayoutube.com
+//&topicId=%2Fm%2F02vx4
+//&key={YOUR_API_KEY}
+
+
+let displayData = data => {
+  //console.log(data.items[0].id.videoId);
   console.log(data);
   let resultElement = '';
   if (data.items) {
-    data.items.forEach(function(item) {
-      resultElement += `<iframe width="300" height="169" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>`;
+    data.items.forEach(item => {
+      resultElement += `<iframe width="246" height="138" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>`;
     });
   } else {
     resultElement += '<p>No results</p>';
@@ -29,13 +49,18 @@ function displayData(data) {
 }
 
 function watchSubmit() {
-  $('.js-search-form').submit(function(e) {
+  $('.main-section').hide();
+  $('.js-search-form').submit((e) => {
     e.preventDefault();
-    let query = $(this).find('.js-query').val();
-    getDataFromApi(query, displayData);
+    let query = $(e.currentTarget).find('.js-query').val();
+    if (query === '') {
+      console.log('please enter a value');
+    } else {
+      $('.main-section').show();
+      getDataFromApi(query, displayData);
+    }
+
   });
 }
 
-$(function() {
-  watchSubmit();
-});
+$(watchSubmit());
