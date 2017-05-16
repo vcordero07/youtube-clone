@@ -39,7 +39,20 @@ let displayData = data => {
   let resultElement = '';
   if (data.items) {
     data.items.forEach(item => {
-      resultElement += `<iframe width="246" height="138" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>`;
+      resultElement +=
+        `
+      <div class='video-container'>
+      <div class='video-frame'>
+      <iframe width="246" height="138" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class='video-info'>
+      <h3 class='video-title'><a class='video-title-link' href="https://www.youtube.com/watch?v=${item.id.videoId}">${item.snippet.title}</a></h3>
+      <span class='video-channel'><a href="https://www.youtube.com/user/${item.snippet.channelTitle}">${item.snippet.channelTitle}</a></span>
+      <span class='video-description'>${item.snippet.description}</span>
+      </div>
+      </div>
+      `;
+
     });
   } else {
     resultElement += '<p>No results</p>';

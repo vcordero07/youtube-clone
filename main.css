@@ -13,7 +13,7 @@ header {
 }
 
 .main-section {
-  background: #f1f1f1;
+  /*background: #f1f1f1;*/
   width: 635px;
 }
 
@@ -51,19 +51,123 @@ header {
   position: relative;
 }
 
+.js-search-results {
+  position: relative;
+}
+
+.js-search-results::before {
+  content: '.';
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+.js-search-results::after {
+  content: '.';
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.video-container {
+  background: #fff;
+  padding: 10px 15px;
+  color: #767676;
+  display: inline-block;
+}
+
+.video-frame {
+  background: #fff;
+  height: 138px;
+  width: 246px;
+  float: left;
+  margin-right: 10px;
+  text-align: center;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-info {
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  float: right;
+  width: 349px;
+  height: 138px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.video-info::before {
+  content: '.';
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+.video-info::after {
+  content: '.';
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.video-title {
+  font-size: 18px;
+  font-weight: 300;
+  padding-bottom: 2px;
+  margin-bottom: 2px;
+  max-width: 499px;
+  word-wrap: break-word;
+}
+
+a.video-title-link {
+  color: #167ac6;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.video-channel {
+  font-size: 12px;
+  white-space: nowrap;
+  display: block;
+}
+
+.video-description {
+  font-size: 12px;
+  margin: 2px 0 0;
+  display: block;
+  line-height: 1.3em;
+  overflow: hidden;
+  position: relative;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
 .search-container {
   overflow: hidden;
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
+  /*font-size: 100%;*/
   background: transparent;
   display: block;
 }
 
 .search-terms-border {
   background-color: #fff;
-  font-size: 14px;
+  /*font-size: 14px;*/
   height: 29px;
   line-height: 30px;
   margin: 0 0 2px;
