@@ -1,5 +1,6 @@
 //05-15-2017
 //missing page token
+//make it responsible design
 
 let endPoint = 'https://www.googleapis.com/youtube/v3/search';
 
