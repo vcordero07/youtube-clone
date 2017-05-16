@@ -12,8 +12,12 @@ header {
   padding-right: 30px;
 }
 
-.main-section {
-  /*background: #f1f1f1;*/
+.page-container {
+  background: #f1f1f1;
+}
+
+.video-section {
+  /**/
   width: 635px;
 }
 
@@ -36,7 +40,7 @@ header {
 }
 
 .logo-img {
-  background: no-repeat url(TTube.png);
+  background: no-repeat url(img/TTube.png);
   background-size: auto;
   width: 114px;
   height: 38px;
@@ -215,11 +219,39 @@ a:hover {
   opacity: .6;
   padding: 0;
   text-indent: -10000px;
-  background: no-repeat url(www-hitchhiker-vflNVER5Q.webp) -694px -43px;
+  background: no-repeat url(img/www-hitchhiker-vflNVER5Q.webp) -694px -43px;
   background-size: auto;
   width: 15px;
   height: 15px;
   box-shadow: none;
   margin: 0 25px;
   cursor: pointer;
+}
+
+.nav-button {
+  background: #fff;
+  margin: 10px 0 -15px;
+  display: block;
+  height: 15px;
+  border-top: 1px solid #e2e2e2;
+}
+
+.showmore-btn {
+  background: #fff;
+  width: 100%;
+  text-transform: uppercase;
+  color: #767676;
+  border: 1px solid transparent;
+  box-shadow: none;
+  height: 28px;
+  font-size: 11px;
+  line-height: normal;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: -25px
+}
+
+input.showmore-btn {
+  text-decoration: none;
 }
