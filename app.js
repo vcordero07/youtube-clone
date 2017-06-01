@@ -1,5 +1,4 @@
-//05-15-2017
-//missing page token
+//05-31-2017
 //make it responsible design
 
 let endPoint = 'https://www.googleapis.com/youtube/v3/search';
@@ -13,21 +12,16 @@ let query = {
   type: 'video',
   key: apiKEY,
   //r: 'json'
-
 }
-
 
 let getDataFromApi = (searchTerm, callback) => {
   $.getJSON(endPoint, query, callback);
 }
 
-
-
 let displayData = data => {
   //console.log(data.items[0].id.videoId);
   console.log(data);
   query.pageToken = data.nextPageToken;
-
 
   let resultElement = '';
   if (data.items) {
@@ -56,8 +50,7 @@ let displayData = data => {
       <span class='video-description'>${item.snippet.description}</span>
       </div>
       </div>
-      `;
-
+      `
 
     });
   } else {
@@ -67,11 +60,9 @@ let displayData = data => {
   $('.js-search-results').append(resultElement);
 }
 
-$(".showmore-btn").click(function() {
+$(".showmore-btn").click(() => {
   getDataFromApi(query, displayData);
-
 });
-
 
 function watchSubmit() {
   $('.video-section').hide();
@@ -90,7 +81,5 @@ function watchSubmit() {
 
   });
 }
-
-
 
 $(watchSubmit());
