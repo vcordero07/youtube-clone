@@ -6,21 +6,29 @@ let endPoint = 'https://www.googleapis.com/youtube/v3/search';
 
 let apiKEY = 'AIzaSyBObrqAWLESv1eKZsNwBG8DBswlsYaIKCU';
 
+let query = {
+  part: 'snippet',
+  order: 'relevance',
+  //q: searchTerm,
+  type: 'video',
+  key: apiKEY,
+  //r: 'json'
+
+}
+
+
 let getDataFromApi = (searchTerm, callback) => {
-  let query = {
-    part: 'snippet',
-    order: 'relevance',
-    q: searchTerm,
-    type: 'video',
-    key: apiKEY,
-    //r: 'json'
-  }
   $.getJSON(endPoint, query, callback);
 }
+
+
 
 let displayData = data => {
   //console.log(data.items[0].id.videoId);
   console.log(data);
+  query.pageToken = data.nextPageToken;
+
+
   let resultElement = '';
   if (data.items) {
     data.items.forEach(item => {
@@ -56,24 +64,33 @@ let displayData = data => {
     resultElement += '<p>No results</p>';
   }
 
-  $('.js-search-results').html(resultElement);
+  $('.js-search-results').append(resultElement);
 }
+
+$(".showmore-btn").click(function() {
+  getDataFromApi(query, displayData);
+
+});
+
 
 function watchSubmit() {
   $('.video-section').hide();
   $('.thinktube-footer').hide();
   $('.js-search-form').submit((e) => {
     e.preventDefault();
-    let query = $(e.currentTarget).find('.js-query').val();
-    if (query === '') {
+    let quer = $(e.currentTarget).find('.js-query').val();
+    if (quer === '') {
       console.log('please enter a value');
     } else {
       $('.video-section').show();
-      $('.thinktube-footer').show();
-      getDataFromApi(query, displayData);
+      $('.thinktube-footer').show()
+      query.q = quer;
+      getDataFromApi(quer, displayData);
     }
 
   });
 }
+
+
 
 $(watchSubmit());
